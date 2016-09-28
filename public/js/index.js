@@ -37,6 +37,10 @@ app.service('db', ['$rootScope', '$filter', '$http', function($scope, $filter, $
 		hash[id] = item;
 		socket.emit('list/modify', {id: id, v: item});
 	};
+
+	this.del = function(id, item) {
+		socket.emit('list/delete', {id: id});
+	};
 }]);
 
 app.controller('MainController', ['$scope', 'db', function($scope, db) {
@@ -61,6 +65,10 @@ app.controller('ModifyController', ['$scope', '$location', '$routeParams', 'db',
 		$location.path('/');
 	};
 	$scope.cancel = function() {
+		$location.path('/');
+	};
+	$scope.del = function() {
+		db.del($scope.id);
 		$location.path('/');
 	};
 
