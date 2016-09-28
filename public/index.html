@@ -18,16 +18,16 @@
   <body ng-app="App">
     <h1>drill</h1>
     <div id="msg"></div>
-    <div ng-view></div>
     <div id="contents" ng-controller="MainController">
+      <div ng-view></div>
       <script type="text/ng-template" id="tmpl-list">
         <div>
-          <a class="listed-item" ng-repeat="item in items" href="#/modify/{{item.id}}">
+          <a class="listed-item" ng-repeat="(id, v) in items" href="#/modify/{{id}}">
             <ul>
-              <li>{{item.name}}</li>
-              <li>torque: {{item.torque}}</li>
+              <li>{{v.name}}</li>
+              <li>torque: {{v.torque}}</li>
             </ul>
-            <div class="picture" style="background-color: {{item.picPath}}"></div>
+            <div class="picture" style="background-color: {{v.picPath}}"></div>
           </a>
         </div>
       </script>
@@ -35,8 +35,10 @@
         modify
         <div>
           <form>
-            <input id="modify.name" type="text" value="{{item.name}}">
-            <input id="modify.torque" type="number" value="{{item.torque}}">
+            title:
+            <input class="form-control" ng-model="item.name" id="modify.name" name="hoge" type="text" />
+            torque:
+            <input class="form-control" ng-model="item.torque" id="modify.torque" type="number" />
             <button ng-click="update()">update</button>
             <button ng-click="cancel();">cancel</button>
           </form>

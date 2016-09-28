@@ -1,35 +1,3 @@
-// var socket = io.connect('http://localhost:3000');
-var socket = io.connect('http://localhost:3000');
-socket.on('connect', function(msg) {
-	console.log("connect");
-});
-
-// メッセージを受けたとき
-socket.on('list/update', function(msg) {
-	console.log('list/update');
-	document.getElementById("msg").innerHTML += msg.value;
-});
-
-// メッセージを送る
-function SendMsg() {
-	var msg = document.getElementById("message").value;
-	console.log('send msg');
-	// メッセージを発射する
-	socket.emit('message', { value: msg });
-}
-// 切断する
-function DisConnect() {
-	var msg = socket.socket.transport.sessid + "は切断しました。";
-	// メッセージを発射する
-	socket.emit('message', { value: msg });
-	// socketを切断する
-	socket.disconnect();
-}
-
-
-
-//////////////////////////////
-
 app = angular.module('App', ['ngRoute']);
 
 app.config(['$routeProvider', function ($routeProvider) {
@@ -47,35 +15,46 @@ app.config(['$routeProvider', function ($routeProvider) {
 		});
 }]);
 
-app.service('list', ['$rootScope', '$filter', '$http', function($scope, $filter, $http) {
-	this.list = [];
+app.service('db', ['$rootScope', '$filter', '$http', function($scope, $filter, $http) {
+	var socket = io.connect('http://localhost:3000');
+	socket.on('connect', function(msg) {
+		console.log("connect");
+	});
+
+	socket.on('list/update', function(msg) {
+		console.log('list/update');
+	});
+
+	this.hash = {};
 
 	this.get = function() {
-		return this.list;
+		return this.hash;
 	}.bind(this);
 
-	this.insert = function(item) {
-		this.list.push(item);
+	this.modify = function(id, item) {
+		this.hash[id] = item;
+		socket.emit('list/modify', item);
 	}
 
 	// for test
-	this.insert({id: 0, name: 'untitled', picPath: '#39a', torque: 3});
-	this.insert({id: 1, name: 'untitled', picPath: '#983', torque: 4});
-	this.insert({id: 2, name: 'untitled', picPath: '#8ab', torque: 5});
+	this.hash[0] = {name: 'untitled', picPath: '#39a', torque: 3};
+	this.hash[1] = {name: 'untitled', picPath: '#983', torque: 4};
+	this.hash[2] = {name: 'untitled', picPath: '#8ab', torque: 5};
 }]);
 
-app.controller('MainController', ['$scope', 'list', function($scope, list) {
+app.controller('MainController', ['$scope', 'db', function($scope, db) {
 }]);
 
-app.controller('ListController', ['$scope', 'list', function($scope, list) {
-	$scope.items = list.get();
+app.controller('ListController', ['$scope', 'db', function($scope, db) {
+	$scope.items = db.get();
 }]);
 
-app.controller('ModifyController', ['$scope', '$location', '$routeParams', 'list', function($scope, $location, $params, list) {
+app.controller('ModifyController', ['$scope', '$location', '$routeParams', 'db', function($scope, $location, $params, db) {
 	$scope.id = $params.id;
-	$scope.item = list.get()[$params.id];
+	$scope.item = db.get()[$params.id];
 
 	$scope.update = function() {
+		db.modify($scope.id, $scope.item);
 		$location.path('/');
 	};
 	$scope.cancel = function() {
