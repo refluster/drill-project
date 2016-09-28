@@ -16,7 +16,7 @@ app.config(['$routeProvider', function ($routeProvider) {
 }]);
 
 app.service('db', ['$rootScope', '$filter', '$http', function($scope, $filter, $http) {
-	var socket = io.connect('http://localhost:3000');
+	var socket = io.connect('http://192.168.13.67:3000');
 	var hash = {};
 
 	socket.on('connect', function(msg) {
