@@ -71,7 +71,14 @@ app.controller('ListController', ['$scope', 'list', function($scope, list) {
 	$scope.items = list.get();
 }]);
 
-app.controller('ModifyController', ['$scope', '$routeParams', 'list', function($scope, $params, list) {
+app.controller('ModifyController', ['$scope', '$location', '$routeParams', 'list', function($scope, $location, $params, list) {
 	$scope.id = $params.id;
 	$scope.item = list.get()[$params.id];
+
+	$scope.update = function() {
+		$location.path('/');
+	};
+	$scope.cancel = function() {
+		$location.path('/');
+	};
 }]);

@@ -34,9 +34,12 @@
       <script type="text/ng-template" id="tmpl-modify">
         modify
         <div>
-          {{item.name}}
-          {{item.picPath}}
-          {{item.torque}}
+          <form>
+            <input id="modify.name" type="text" value="{{item.name}}">
+            <input id="modify.torque" type="number" value="{{item.torque}}">
+            <button ng-click="update()">update</button>
+            <button ng-click="cancel();">cancel</button>
+          </form>
         </div>
       </script>
     </div>
