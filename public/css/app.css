@@ -1,0 +1,13 @@
+.listed-item {
+    width: 140px;
+    height: 140px;
+    display: inline-block;
+	border: 1px solid black;
+}
+
+.listed-item .picture {
+	width: 100px;
+	height: 80px;
+	margin-left: auto;
+	margin-right: auto;
+}

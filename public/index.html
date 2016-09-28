@@ -6,6 +6,7 @@
     <script src="./js/angular-route.min.js" type="text/javascript"></script>
     <script src="./js/index.js" type="text/javascript"></script>
     <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/app.css" />
     <meta charset="UTF-8">
     <meta http-equiv="Pragma" content="no-cache">
     <meta http-equiv="Cache-Control" content="no-cache">
@@ -20,14 +21,23 @@
     <div ng-view></div>
     <div id="contents" ng-controller="MainController">
       <script type="text/ng-template" id="tmpl-list">
-        list
-        <div ng-repeat="item in items">
-          {{item.name}}
+        <div>
+          <a class="listed-item" ng-repeat="item in items" href="#/modify/{{item.id}}">
+            <ul>
+              <li>{{item.name}}</li>
+              <li>torque: {{item.torque}}</li>
+            </ul>
+            <div class="picture" style="background-color: {{item.picPath}}"></div>
+          </a>
         </div>
-        <a href="#/modify/oge">modify</a>
       </script>
       <script type="text/ng-template" id="tmpl-modify">
         modify
+        <div>
+          {{item.name}}
+          {{item.picPath}}
+          {{item.torque}}
+        </div>
       </script>
     </div>
   </body>

@@ -38,7 +38,7 @@ app.config(['$routeProvider', function ($routeProvider) {
 			templateUrl: 'tmpl-list',
 			controller: 'ListController'
 		})
-		.when('/modify/:file*', {
+		.when('/modify/:id*', {
 			templateUrl: 'tmpl-modify',
 			controller: 'ModifyController'
 		})
@@ -55,8 +55,13 @@ app.service('list', ['$rootScope', '$filter', '$http', function($scope, $filter,
 	}.bind(this);
 
 	this.insert = function(item) {
-		this.list.add(item);
+		this.list.push(item);
 	}
+
+	// for test
+	this.insert({id: 0, name: 'untitled', picPath: '#39a', torque: 3});
+	this.insert({id: 1, name: 'untitled', picPath: '#983', torque: 4});
+	this.insert({id: 2, name: 'untitled', picPath: '#8ab', torque: 5});
 }]);
 
 app.controller('MainController', ['$scope', 'list', function($scope, list) {
@@ -66,5 +71,7 @@ app.controller('ListController', ['$scope', 'list', function($scope, list) {
 	$scope.items = list.get();
 }]);
 
-app.controller('ModifyController', ['$scope', 'list', function($scope, list) {
+app.controller('ModifyController', ['$scope', '$routeParams', 'list', function($scope, $params, list) {
+	$scope.id = $params.id;
+	$scope.item = list.get()[$params.id];
 }]);
