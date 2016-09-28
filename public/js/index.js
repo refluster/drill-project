@@ -17,29 +17,26 @@ app.config(['$routeProvider', function ($routeProvider) {
 
 app.service('db', ['$rootScope', '$filter', '$http', function($scope, $filter, $http) {
 	var socket = io.connect('http://localhost:3000');
+	var hash = {};
+
 	socket.on('connect', function(msg) {
 		console.log("connect");
 	});
 
-	socket.on('list/update', function(msg) {
+	socket.on('list/update', function(d) {
+		hash = d;
+		$scope.$broadcast('update:db', 3);
 		console.log('list/update');
 	});
 
-	this.hash = {};
-
 	this.get = function() {
-		return this.hash;
-	}.bind(this);
+		return hash;
+	};
 
 	this.modify = function(id, item) {
-		this.hash[id] = item;
-		socket.emit('list/modify', item);
-	}
-
-	// for test
-	this.hash[0] = {name: 'untitled', picPath: '#39a', torque: 3};
-	this.hash[1] = {name: 'untitled', picPath: '#983', torque: 4};
-	this.hash[2] = {name: 'untitled', picPath: '#8ab', torque: 5};
+		hash[id] = item;
+		socket.emit('list/modify', {id: id, v: item});
+	};
 }]);
 
 app.controller('MainController', ['$scope', 'db', function($scope, db) {
@@ -47,6 +44,12 @@ app.controller('MainController', ['$scope', 'db', function($scope, db) {
 
 app.controller('ListController', ['$scope', 'db', function($scope, db) {
 	$scope.items = db.get();
+    $scope.$on('update:db', function(e) {
+		console.log('list upd');
+		$scope.$apply(function() {
+			$scope.items = db.get();
+		});
+    });
 }]);
 
 app.controller('ModifyController', ['$scope', '$location', '$routeParams', 'db', function($scope, $location, $params, db) {
@@ -60,4 +63,8 @@ app.controller('ModifyController', ['$scope', '$location', '$routeParams', 'db',
 	$scope.cancel = function() {
 		$location.path('/');
 	};
+
+    $scope.$on('update:db', function(e) {
+        $scope.items = db.get();
+    });
 }]);
