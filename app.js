@@ -27,13 +27,9 @@ App.prototype.start = function() {
 		console.log('Express server listening on port ' + this.app.get('port'));
 	}.bind(this));
 
-	// driver
-	this.driver = require('./lib/drv');
-	this.driver.start();
-
 	// socket io
 	this.socket = require('./lib/socket');
-	this.socket.init(this.driver, this.server);
+	this.socket.init(this.server);
 }
 
 app = new App();
