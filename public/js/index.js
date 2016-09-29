@@ -18,6 +18,7 @@ app.config(['$routeProvider', function ($routeProvider) {
 app.service('db', ['$rootScope', '$filter', '$http', function($scope, $filter, $http) {
 	var socket = io.connect('http://192.168.13.67:3000');
 	var hash = {};
+	var history = [];
 
 	socket.on('connect', function(msg) {
 		console.log("connect");
@@ -29,6 +30,12 @@ app.service('db', ['$rootScope', '$filter', '$http', function($scope, $filter, $
 		console.log('list/update');
 	});
 
+	socket.on('history/update', function(d) {
+		history = d;
+		$scope.$broadcast('update:db:history');
+		console.log('history/update');
+	});
+
 	this.get = function() {
 		return hash;
 	};
@@ -36,6 +43,10 @@ app.service('db', ['$rootScope', '$filter', '$http', function($scope, $filter, $
 	this.modify = function(id, item) {
 		hash[id] = item;
 		socket.emit('list/modify', {id: id, v: item});
+	};
+
+	this.getHistory = function() {
+		return history;
 	};
 
 	this.del = function(id, item) {
@@ -53,7 +64,13 @@ app.controller('ListController', ['$scope', 'db', function($scope, db) {
 		$scope.$apply(function() {
 			$scope.items = db.get();
 		});
-    });
+	});
+	$scope.$on('update:db:history', function(e) {
+		console.log('history upd');
+		$scope.$apply(function() {
+			$scope.history = db.getHistory();
+		});
+	});
 }]);
 
 app.controller('ModifyController', ['$scope', '$location', '$routeParams', 'db', function($scope, $location, $params, db) {

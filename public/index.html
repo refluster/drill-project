@@ -22,6 +22,12 @@
       <div ng-view></div>
       <script type="text/ng-template" id="tmpl-list">
         <div>
+          <ul>
+            <li ng-repeat="v in history">
+              {{v.date}} {{items[v.id].name}} {{v.torque}} {{v.result}}
+            </li>
+          </ul>
+        </div>
           <a class="listed-item" ng-repeat="(id, v) in items" href="#/modify/{{id}}">
             <ul>
               <li>{{v.name}}</li>
