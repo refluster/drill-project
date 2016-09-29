@@ -12,3 +12,8 @@
 	margin-right: auto;
 	background-size: contain;
 }
+
+.history {
+	height: 100px;
+	overflow: scroll;
+}
