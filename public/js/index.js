@@ -59,12 +59,14 @@ app.controller('ListController', ['$scope', 'db', function($scope, db) {
 app.controller('ModifyController', ['$scope', '$location', '$routeParams', 'db', function($scope, $location, $params, db) {
 	$scope.id = $params.id;
 	$scope.item = db.get()[$params.id];
+	$scope.backup_item = angular.copy($scope.item);
 
 	$scope.update = function() {
 		db.modify($scope.id, $scope.item);
 		$location.path('/');
 	};
 	$scope.cancel = function() {
+		db.get()[$params.id] = $scope.backup_item;
 		$location.path('/');
 	};
 	$scope.del = function() {
