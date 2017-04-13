@@ -16,7 +16,7 @@ app.config(['$routeProvider', function ($routeProvider) {
 }]);
 
 app.service('db', ['$rootScope', '$filter', '$http', function($scope, $filter, $http) {
-	var socket = io.connect('http://192.168.13.67:3000');
+	var socket = io.connect('http://192.168.11.195:3000');
 	var hash = {};
 	var history = [];
 
@@ -56,8 +56,8 @@ app.service('db', ['$rootScope', '$filter', '$http', function($scope, $filter, $
 
 app.controller('MainController', ['$scope', 'db', function($scope, db) {
 }]);
-
 app.controller('ListController', ['$scope', 'db', function($scope, db) {
+	var resetNum = 0;
 	$scope.items = db.get();
     $scope.$on('update:db', function(e) {
 		console.log('list upd');
@@ -68,9 +68,21 @@ app.controller('ListController', ['$scope', 'db', function($scope, db) {
 	$scope.$on('update:db:history', function(e) {
 		console.log('history upd');
 		$scope.$apply(function() {
-			$scope.history = db.getHistory();
+			$scope.history = db.getHistory().slice(resetNum);
+			var his = db.getHistory();
+			var nhis = his[his.length-1];
+			if(nhis.result == "成功")document.getElementById("soundok").play();
+			if(nhis.result == "失敗")document.getElementById("soundng").play();
+			alert('締め付け箇所: ' + db.get()[nhis.id].name
+				+ '\nトルク: ' + nhis.torque
+				+ '\n締め付け成否: ' + nhis.result
+				+ '\n日付: ' + nhis.date);
 		});
 	});
+	$scope.logreset = function() {
+		resetNum = db.getHistory().length;
+		$scope.history = db.getHistory().slice(resetNum);
+	};
 }]);
 
 app.controller('ModifyController', ['$scope', '$location', '$routeParams', 'db', function($scope, $location, $params, db) {

@@ -13,38 +13,48 @@
     <meta http-equiv="Expires" content="0">
     <meta content="text/html; charset=EUC-JP">
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0">
-    <title>drill</title>
+    <title>Power Tool for Industrial 4.0</title>
+    <font size=4>
   </head>
   <body ng-app="App">
-    <h1>drill</h1>
+    OK<audio id="soundok" preload="auto" src="OK.mp3" controls></audio>
+    NG<audio id="soundng" preload="auto" src="NG.mp3" controls></audio>
+    <div id="title" class="title"><h1>Power Tool for Industrial 4.0</h1></div>
     <div id="msg"></div>
     <div id="contents" ng-controller="MainController">
       <div ng-view></div>
       <script type="text/ng-template" id="tmpl-list">
-        <div class="history">
-          <ul>
-            <li ng-repeat="v in history">
-              {{v.date}} {{items[v.id].name}} {{v.torque}} {{v.result}}
-            </li>
-          </ul>
-        </div>
-        <div>
+        <div class="target">
+          <div style="color:#0040C0"><h2>登録箇所一覧</h2></div>
           <a class="listed-item" ng-repeat="(id, v) in items" href="#/modify/{{id}}">
-            <ul>
-              <li>{{v.name}}</li>
-              <li>torque: {{v.torque}}</li>
-            </ul>
+            <center>
+                  登録名:{{v.name}}<br>
+                  トルク:{{v.torque}}
+            </center>
             <div class="picture" style="background-image: url({{v.picPath}})"></div>
           </a>
         </div>
+        <div class="history">
+        <div style="color:#0040C0"><h2>締め付けログ<button class="btn btn-primary" ng-click="logreset()">ログリセット</button></h2></div>
+          <ul>
+           <font size=6>
+            <table rules="all">
+              <tr><th>登録名</th><th>トルク</th><th>締め付け成否</th><th>日付</th></tr>
+                <tr ng-repeat="v in history | orderBy:'-'">
+                  <td>{{items[v.id].name}}</td><td align="center">{{v.torque}}</td><td align="center">{{v.result}}</td><td>{{v.date}}</td>
+              </tr>
+            </table>
+           </font>
+          </ul>
+        </div>
       </script>
       <script type="text/ng-template" id="tmpl-modify">
-        modify
+        <div style="color:#0040C0"><h2>トルク設定</h2></div>
         <div>
           <form>
-            title:
+               登録名:
             <input class="form-control" ng-model="item.name" id="modify.name" name="hoge" type="text" />
-            torque:
+               トルク:
             <input class="form-control" ng-model="item.torque" id="modify.torque" type="number" />
             <button class="btn btn-primary" ng-click="update()">update</button>
             <button class="btn btn-primary" ng-click="cancel();">cancel</button>
@@ -55,4 +65,3 @@
     </div>
   </body>
 </html>
-
