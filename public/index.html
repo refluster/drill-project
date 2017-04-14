@@ -23,7 +23,7 @@
     <div id="msg"></div>
     <div id="contents" ng-controller="MainController">
       <div ng-view></div>
-      <script type="text/ng-template" id="tmpl-list">
+      <script type="text/ng-template" id="tmpl-main">
         <div class="target">
           <div style="color:#0040C0"><h2>登録箇所一覧</h2></div>
           <a class="listed-item" ng-repeat="(id, v) in items" href="#/modify/{{id}}">
@@ -48,7 +48,7 @@
           </ul>
         </div>
       </script>
-      <script type="text/ng-template" id="tmpl-modify">
+      <script type="text/ng-template" id="tmpl-list-modify">
         <div style="color:#0040C0"><h2>トルク設定</h2></div>
         <div>
           <form>

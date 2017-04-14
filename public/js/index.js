@@ -3,11 +3,11 @@ app = angular.module('App', ['ngRoute']);
 app.config(['$routeProvider', function ($routeProvider) {
 	$routeProvider
 		.when('/', {
-			templateUrl: 'tmpl-list',
+			templateUrl: 'tmpl-main',
 			controller: 'ListController'
 		})
 		.when('/modify/:id*', {
-			templateUrl: 'tmpl-modify',
+			templateUrl: 'tmpl-list-modify',
 			controller: 'ModifyController'
 		})
 		.otherwise({
@@ -16,7 +16,7 @@ app.config(['$routeProvider', function ($routeProvider) {
 }]);
 
 app.service('db', ['$rootScope', '$filter', '$http', function($scope, $filter, $http) {
-	var socket = io.connect('http://192.168.11.195:3000');
+	var socket = io.connect('http://192.168.11.110:3000');
 	var hash = {};
 	var history = [];
 
