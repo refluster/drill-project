@@ -12,6 +12,10 @@
 	margin-right: auto;
 	background-size: contain;
 }
+.history-item .picture {
+	width: 240px;
+	height: 180px;
+}
 .title {
 	background-color:#0040C0;
 	color:#FFFFFF;
@@ -21,8 +25,4 @@
 	display: block;
 	padding: 30px 20px;
 	border: 1px solid #888;
-}
-.img-history {
-	width: 240px;
-	height: 180px;
 }

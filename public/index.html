@@ -47,13 +47,13 @@
           <div style="color:#0040C0">
             <h2>締め付けログ<button class="btn btn-primary" ng-click="logreset()">ログリセット</button></h2>
           </div>
-          <ul>
+          <ul class="history-item">
             <li ng-repeat="v in history | orderBy:'-'">
               name: {{items[v.id].name}}<br>
               torque: {{v.torque}}<br>
               result: {{v.result}}<br>
               date: {{v.date}}<br>
-              <img class="img-history" src="{{v.picPath}}">
+              <img class="picture" src="{{v.picPath}}">
             </li>
           </ul>
         </div>
