@@ -36,14 +36,16 @@
           <div style="color:#0040C0"><h2>登録箇所一覧</h2></div>
           <a class="listed-item" ng-repeat="(id, v) in items" href="#/modify/{{id}}">
             <center>
-                  登録名:{{v.name}}<br>
-                  トルク:{{v.torque}}
+              登録名:{{v.name}}<br>
+              トルク:{{v.torque}}
             </center>
             <div class="picture" style="background-image: url({{v.picPath}})"></div>
           </a>
         </div>
         <div class="history">
-        <div style="color:#0040C0"><h2>締め付けログ<button class="btn btn-primary" ng-click="logreset()">ログリセット</button></h2></div>
+          <div style="color:#0040C0">
+            <h2>締め付けログ<button class="btn btn-primary" ng-click="logreset()">ログリセット</button></h2>
+          </div>
           <ul>
            <font size=6>
             <table rules="all">
