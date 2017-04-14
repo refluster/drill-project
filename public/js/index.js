@@ -72,6 +72,10 @@ app.service('db', ['$rootScope', '$filter', '$http', function($scope, $filter, $
 	this.del = function(id, item) {
 		socket.emit('list/delete', {id: id});
 	};
+
+	this.resetHistory = function() {
+		socket.emit('history/reset');
+	}
 }]);
 
 app.controller('MainController', ['$scope', 'db', function($scope, db) {
@@ -91,16 +95,15 @@ app.controller('ListController', ['$scope', 'db', function($scope, db) {
 }]);
 
 app.controller('HistoryController', ['$scope', 'db', function($scope, db) {
-	var resetNum = 0;
 	$scope.history = db.getHistory()
 	$scope.$on('update:db:history', function(e) {
 		console.log('history upd');
 		$scope.$apply(function() {
-			$scope.history = db.getHistory().slice(resetNum);
+			$scope.history = db.getHistory();
 			var his = db.getHistory();
 			var nhis = his[his.length-1];
-			if(nhis.result == "成功")document.getElementById("soundok").play();
-			if(nhis.result == "失敗")document.getElementById("soundng").play();
+			if(nhis.result == "成功") document.getElementById("soundok").play();
+			if(nhis.result == "失敗") document.getElementById("soundng").play();
 			alert('締め付け箇所: ' + db.get()[nhis.id].name
 				+ '\nトルク: ' + nhis.torque
 				+ '\n締め付け成否: ' + nhis.result
@@ -108,8 +111,8 @@ app.controller('HistoryController', ['$scope', 'db', function($scope, db) {
 		});
 	});
 	$scope.logreset = function() {
-		resetNum = db.getHistory().length;
-		$scope.history = db.getHistory().slice(resetNum);
+		db.resetHistory();
+		$scope.history = db.getHistory();
 	};
 }]);
 
