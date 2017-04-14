@@ -23,12 +23,14 @@
     <div id="contents" ng-controller="MainController">
       <div ng-view></div>
       <script type="text/ng-template" id="tmpl-menu">
-        <div class="menu-item" >ロック</div>
-        <a class="menu-item" href="#/list">回転・トルク設定</a>
-        <a class="menu-item" href="#/history">作業履歴</a>
-        <a class="menu-item" href="#/info">本体・電源の情報</a>
-        <a class="menu-item" href="#/reset">設定のリセット</a>
-        <a class="menu-item" href="#/auth">工具認証</a>
+        <div class="view menu">
+          <div class="menu-item" >ロック</div>
+          <a class="menu-item" href="#/list">回転・トルク設定</a>
+          <a class="menu-item" href="#/history">作業履歴</a>
+          <a class="menu-item" href="#/info">本体・電源の情報</a>
+          <a class="menu-item" href="#/reset">設定のリセット</a>
+          <a class="menu-item" href="#/auth">工具認証</a>
+        </div>
       </script>
       <script type="text/ng-template" id="tmpl-list">
         <div class="view list">

@@ -28,9 +28,12 @@
 }
 .menu-item {
 	display: block;
-	padding: 16px 20px;
-	border: 1px solid #888;
+	padding: 16px 0px;
+	margin-left: 20px;
 }
 body {
 	font-size: 18px;
+}
+.menu-item + .menu-item {
+	border-top: 1px solid #888;
 }
