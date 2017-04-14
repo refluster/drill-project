@@ -3,12 +3,32 @@ app = angular.module('App', ['ngRoute']);
 app.config(['$routeProvider', function ($routeProvider) {
 	$routeProvider
 		.when('/', {
-			templateUrl: 'tmpl-main',
+			templateUrl: 'tmpl-menu',
+			controller: 'MenuController'
+		})
+		.when('/list', {
+			templateUrl: 'tmpl-list',
 			controller: 'ListController'
 		})
-		.when('/modify/:id*', {
+		.when('/history', {
+			templateUrl: 'tmpl-history',
+			controller: 'HistoryController'
+		})
+		.when('/info', {
+			templateUrl: 'tmpl-info',
+			controller: 'InfoController'
+		})
+		.when('/reset', {
+			templateUrl: 'tmpl-reset',
+			controller: 'ResetController'
+		})
+		.when('/auth', {
+			templateUrl: 'tmpl-auth',
+			controller: 'AuthController'
+		})
+		.when('/list/modify/:id*', {
 			templateUrl: 'tmpl-list-modify',
-			controller: 'ModifyController'
+			controller: 'ListModifyController'
 		})
 		.otherwise({
 			redirectTo: '/'
@@ -56,6 +76,10 @@ app.service('db', ['$rootScope', '$filter', '$http', function($scope, $filter, $
 
 app.controller('MainController', ['$scope', 'db', function($scope, db) {
 }]);
+
+app.controller('MenuController', ['$scope', 'db', function($scope, db) {
+}]);
+
 app.controller('ListController', ['$scope', 'db', function($scope, db) {
 	var resetNum = 0;
 	$scope.items = db.get();
@@ -85,7 +109,19 @@ app.controller('ListController', ['$scope', 'db', function($scope, db) {
 	};
 }]);
 
-app.controller('ModifyController', ['$scope', '$location', '$routeParams', 'db', function($scope, $location, $params, db) {
+app.controller('HistoryController', ['$scope', 'db', function($scope, db) {
+}]);
+
+app.controller('InfoController', ['$scope', 'db', function($scope, db) {
+}]);
+
+app.controller('ResetController', ['$scope', 'db', function($scope, db) {
+}]);
+
+app.controller('AuthController', ['$scope', 'db', function($scope, db) {
+}]);
+
+app.controller('ListModifyController', ['$scope', '$location', '$routeParams', 'db', function($scope, $location, $params, db) {
 	$scope.id = $params.id;
 	$scope.item = db.get()[$params.id];
 	$scope.backup_item = angular.copy($scope.item);

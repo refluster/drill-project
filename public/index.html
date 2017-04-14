@@ -23,7 +23,15 @@
     <div id="msg"></div>
     <div id="contents" ng-controller="MainController">
       <div ng-view></div>
-      <script type="text/ng-template" id="tmpl-main">
+      <script type="text/ng-template" id="tmpl-menu">
+        <div class="menu-item" >ロック</div>
+        <a class="menu-item" href="#/list">回転・トルク設定</a>
+        <a class="menu-item" href="#/history">作業履歴</a>
+        <a class="menu-item" href="#/info">本体・電源の情報</a>
+        <a class="menu-item" href="#/reset">設定のリセット</a>
+        <a class="menu-item" href="#/auth">工具認証</a>
+      </script>
+      <script type="text/ng-template" id="tmpl-list">
         <div class="target">
           <div style="color:#0040C0"><h2>登録箇所一覧</h2></div>
           <a class="listed-item" ng-repeat="(id, v) in items" href="#/modify/{{id}}">
@@ -48,6 +56,10 @@
           </ul>
         </div>
       </script>
+      <script type="text/ng-template" id="tmpl-history">history</script>
+      <script type="text/ng-template" id="tmpl-info">info</script>
+      <script type="text/ng-template" id="tmpl-reset">reset</script>
+      <script type="text/ng-template" id="tmpl-auth">auth</script>
       <script type="text/ng-template" id="tmpl-list-modify">
         <div style="color:#0040C0"><h2>トルク設定</h2></div>
         <div>
