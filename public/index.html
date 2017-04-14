@@ -14,7 +14,6 @@
     <meta content="text/html; charset=EUC-JP">
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0">
     <title>Power Tool for Industrial 4.0</title>
-    <font size=4>
   </head>
   <body ng-app="App">
     OK<audio id="soundok" preload="auto" src="OK.mp3" controls></audio>
@@ -49,7 +48,6 @@
             <h2>締め付けログ<button class="btn btn-primary" ng-click="logreset()">ログリセット</button></h2>
           </div>
           <ul>
-           <font size=6>
             <table rules="all">
               <tr><th>登録名</th><th>トルク</th><th>締め付け成否</th><th>日付</th><th>--</th></tr>
               <tr ng-repeat="v in history | orderBy:'-'">
@@ -58,7 +56,6 @@
                 <td><img src="{{v.picPath}}"></td>
               </tr>
             </table>
-           </font>
           </ul>
         </div>
       </script>
