@@ -48,14 +48,13 @@
             <h2>締め付けログ<button class="btn btn-primary" ng-click="logreset()">ログリセット</button></h2>
           </div>
           <ul>
-            <table rules="all">
-              <tr><th>登録名</th><th>トルク</th><th>締め付け成否</th><th>日付</th><th>--</th></tr>
-              <tr ng-repeat="v in history | orderBy:'-'">
-                <td>{{items[v.id].name}}</td><td align="center">{{v.torque}}</td>
-                <td align="center">{{v.result}}</td><td>{{v.date}}</td>
-                <td><img src="{{v.picPath}}"></td>
-              </tr>
-            </table>
+            <li ng-repeat="v in history | orderBy:'-'">
+              name: {{items[v.id].name}}<br>
+              torque: {{v.torque}}<br>
+              result: {{v.result}}<br>
+              date: {{v.date}}<br>
+              <img class="img-history" src="{{v.picPath}}">
+            </li>
           </ul>
         </div>
       </script>
