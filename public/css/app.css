@@ -15,7 +15,7 @@
 .title {
 	background-color:#0040C0;
 	color:#FFFFFF;
-	height:40px;
+	font-size: 30px;
 }
 .target {
 	overflow: auto;
