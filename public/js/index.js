@@ -133,15 +133,15 @@ app.controller('ListModifyController', ['$scope', '$location', '$routeParams', '
 
 	$scope.update = function() {
 		db.modify($scope.id, $scope.item);
-		$location.path('/');
+		$location.path('/list');
 	};
 	$scope.cancel = function() {
 		db.get()[$params.id] = $scope.backup_item;
-		$location.path('/');
+		$location.path('/list');
 	};
 	$scope.del = function() {
 		db.del($scope.id);
-		$location.path('/');
+		$location.path('/list');
 	};
 
     $scope.$on('update:db', function(e) {
