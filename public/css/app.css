@@ -19,6 +19,13 @@
 	color:#FFFFFF;
 	font-size: 30px;
 }
+.view .title {
+	font-size: 24px;
+	color: #0040C0;
+	background-color: white;
+	margin: 8px 0px;
+	text-align: center;
+}
 .menu-item {
 	display: block;
 	padding: 30px 20px;
