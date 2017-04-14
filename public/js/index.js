@@ -81,7 +81,6 @@ app.controller('MenuController', ['$scope', 'db', function($scope, db) {
 }]);
 
 app.controller('ListController', ['$scope', 'db', function($scope, db) {
-	var resetNum = 0;
 	$scope.items = db.get();
     $scope.$on('update:db', function(e) {
 		console.log('list upd');
@@ -89,6 +88,10 @@ app.controller('ListController', ['$scope', 'db', function($scope, db) {
 			$scope.items = db.get();
 		});
 	});
+}]);
+
+app.controller('HistoryController', ['$scope', 'db', function($scope, db) {
+	var resetNum = 0;
 	$scope.$on('update:db:history', function(e) {
 		console.log('history upd');
 		$scope.$apply(function() {
@@ -107,9 +110,6 @@ app.controller('ListController', ['$scope', 'db', function($scope, db) {
 		resetNum = db.getHistory().length;
 		$scope.history = db.getHistory().slice(resetNum);
 	};
-}]);
-
-app.controller('HistoryController', ['$scope', 'db', function($scope, db) {
 }]);
 
 app.controller('InfoController', ['$scope', 'db', function($scope, db) {
