@@ -17,13 +17,6 @@
 	color:#FFFFFF;
 	font-size: 30px;
 }
-.target {
-	overflow: auto;
-	width: 280px;
-	height: calc(100vh - 60px);
-	position:absolute;
-	border:1px solid#000000;
-}
 .menu-item {
 	display: block;
 	padding: 30px 20px;
