@@ -102,6 +102,7 @@ app.controller('HistoryController', ['$scope', 'db', function($scope, db) {
 			$scope.history = db.getHistory();
 			var his = db.getHistory();
 			var nhis = his[his.length-1];
+			if(nhis == -1) return;
 			if(nhis.result == "成功") document.getElementById("soundok").play();
 			if(nhis.result == "失敗") document.getElementById("soundng").play();
 			alert('締め付け箇所: ' + db.get()[nhis.id].name
