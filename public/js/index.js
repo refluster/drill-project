@@ -92,6 +92,7 @@ app.controller('ListController', ['$scope', 'db', function($scope, db) {
 
 app.controller('HistoryController', ['$scope', 'db', function($scope, db) {
 	var resetNum = 0;
+	$scope.history = db.getHistory()
 	$scope.$on('update:db:history', function(e) {
 		console.log('history upd');
 		$scope.$apply(function() {
