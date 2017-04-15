@@ -5,6 +5,12 @@
 audio {
 	display: none;
 }
+body {
+	font-size: 18px;
+}
+html, body, #contents, #contents > div, .view, .contents {
+	height: 100%;
+}
 .contents > .item, .history > .item {
     display: block;
 	margin: 20px 0px;
@@ -55,12 +61,6 @@ audio {
 	font-weight: 500;
 	color: black;
 }
-body {
-	font-size: 18px;
-}
 .menu-item + .menu-item {
 	border-top: 1px solid #ddd;
-}
-html, body, #contents, #contents > div, .view, .contents {
-	height: 100%;
 }
