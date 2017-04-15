@@ -41,8 +41,7 @@
           <div class="title">回転・トルク設定</div>
           <div class="contents">
             <a class="item active-area" ng-repeat="(id, v) in items" href="#/list/modify/{{id}}">
-              登録名:{{v.name}}<br>
-              トルク:{{v.torque}}
+              {{v.name}} ({{v.torque}})
               <div class="picture" style="background-image: url({{v.picPath}})"></div>
             </a>
           </div>
@@ -54,10 +53,7 @@
           <div class="contents">
             <button class="btn btn-primary" ng-click="logreset()">ログリセット</button>
             <div class="item active-area" ng-repeat="v in history | orderBy:'-'">
-              name: {{items[v.id].name}}<br>
-              torque: {{v.torque}}<br>
-              result: {{v.result}}<br>
-              date: {{v.date}}<br>
+              {{v.date}} {{v.result}} ({{v.torque}}) {{items[v.id].name}}
               <div class="picture" style="background-image: url({{v.picPath}})"></div>
             </div>
           </div>
