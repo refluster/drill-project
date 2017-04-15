@@ -1,7 +1,8 @@
 .list > .item {
     height: 240px;
     display: block;
-	border: 1px solid black;
+	margin: 20px 0px;
+	background-color: #fff;
 }
 .list > .item > .picture {
 	width: 240px;

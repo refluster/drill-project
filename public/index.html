@@ -37,7 +37,7 @@
       <script type="text/ng-template" id="tmpl-list">
         <div class="view list">
           <div class="title">回転・トルク設定</div>
-          <a class="item" ng-repeat="(id, v) in items" href="#/list/modify/{{id}}">
+          <a class="item active-area" ng-repeat="(id, v) in items" href="#/list/modify/{{id}}">
             登録名:{{v.name}}<br>
             トルク:{{v.torque}}
             <div class="picture" style="background-image: url({{v.picPath}})"></div>
