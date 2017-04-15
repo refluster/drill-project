@@ -43,6 +43,7 @@ audio {
 }
 .view > .contents {
 	padding: 60px 0px 10px;
+	overflow-y: scroll;
 }
 .view .active-area {
 	background-color: #fff;
