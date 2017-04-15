@@ -19,12 +19,21 @@
 	color:#FFFFFF;
 	font-size: 30px;
 }
+.view {
+	background-color: #eee;
+}
 .view .title {
 	font-size: 24px;
 	color: #0040C0;
 	background-color: white;
 	margin: 8px 0px;
 	text-align: center;
+}
+.view .active-area {
+	background-color: #fff;
+	border-top: 1px solid #ddd;
+	border-bottom: 2px solid #aaa;
+	margin: 20px 0px;
 }
 .menu-item {
 	display: block;
@@ -35,5 +44,10 @@ body {
 	font-size: 18px;
 }
 .menu-item + .menu-item {
-	border-top: 1px solid #888;
+	border-top: 1px solid #ddd;
+}
+html, body, .ng-scope, .view {
+	overflow:hidden, scroll;
+	height: 100%;
+    overflow: hidden;
 }
