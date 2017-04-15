@@ -1,7 +1,11 @@
+* {
+	padding: 0px;
+	margin: 0px;
+}
 audio {
 	display: none;
 }
-.list > .item, .history > .item {
+.contents > .item, .history > .item {
     height: 240px;
     display: block;
 	margin: 20px 0px;
@@ -26,12 +30,19 @@ audio {
 .view {
 	background-color: #eee;
 }
-.view .title {
+.view > .title {
+	position: fixed;
+	left: 0;
+	right: 0;
 	font-size: 24px;
-	color: #0040C0;
 	background-color: white;
-	padding: 8px 0px;
 	text-align: center;
+	border-bottom: 2px solid #aaa;
+	height: 60px;
+	line-height: 60px
+}
+.view > .contents {
+	padding: 60px 0px 10px;
 }
 .view .active-area {
 	background-color: #fff;
@@ -52,6 +63,6 @@ body {
 .menu-item + .menu-item {
 	border-top: 1px solid #ddd;
 }
-html, body, #contents, #contents > div, .view {
+html, body, #contents, #contents > div, .view, .contents {
 	height: 100%;
 }
