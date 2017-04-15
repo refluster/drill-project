@@ -26,7 +26,7 @@
 	font-size: 24px;
 	color: #0040C0;
 	background-color: white;
-	margin: 8px 0px;
+	padding: 8px 0px;
 	text-align: center;
 }
 .view .active-area {
@@ -48,7 +48,7 @@ body {
 .menu-item + .menu-item {
 	border-top: 1px solid #ddd;
 }
-html, body, .ng-scope, .view {
+html, body, #contents, #contents > div, .view {
 	overflow:hidden, scroll;
 	height: 100%;
     overflow: hidden;
