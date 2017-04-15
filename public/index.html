@@ -51,13 +51,15 @@
       <script type="text/ng-template" id="tmpl-history">
         <div class="view history">
           <div class="title">作業履歴</div>
-          <button class="btn btn-primary" ng-click="logreset()">ログリセット</button>
-          <div class="item active-area" ng-repeat="v in history | orderBy:'-'">
-            name: {{items[v.id].name}}<br>
-            torque: {{v.torque}}<br>
-            result: {{v.result}}<br>
-            date: {{v.date}}<br>
-            <img class="picture" src="{{v.picPath}}">
+          <div class="contents">
+            <button class="btn btn-primary" ng-click="logreset()">ログリセット</button>
+            <div class="item active-area" ng-repeat="v in history | orderBy:'-'">
+              name: {{items[v.id].name}}<br>
+              torque: {{v.torque}}<br>
+              result: {{v.result}}<br>
+              date: {{v.date}}<br>
+              <img class="picture" src="{{v.picPath}}">
+            </div>
           </div>
         </div>
       </script>
