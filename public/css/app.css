@@ -6,21 +6,16 @@ audio {
 	display: none;
 }
 .contents > .item, .history > .item {
-    height: 240px;
     display: block;
 	margin: 20px 0px;
 	background-color: #fff;
 }
-.list > .item > .picture {
+.contents > .item > .picture {
 	width: 240px;
 	height: 180px;
 	margin-left: auto;
 	margin-right: auto;
 	background-size: contain;
-}
-.history > .item > .picture {
-	width: 240px;
-	height: 180px;
 }
 #title {
 	background-color:#0040C0;
