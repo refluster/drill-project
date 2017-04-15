@@ -18,7 +18,7 @@ audio {
 	width: 240px;
 	height: 180px;
 }
-.title {
+#title {
 	background-color:#0040C0;
 	color:#FFFFFF;
 	font-size: 30px;

@@ -18,12 +18,12 @@
   <body ng-app="App">
     <audio id="soundok" preload="auto" src="OK.mp3" controls></audio>
     <audio id="soundng" preload="auto" src="NG.mp3" controls></audio>
-    <div id="title" class="title">Power Tool for Industrial 4.0</div>
     <div id="msg"></div>
     <div id="contents" ng-controller="MainController">
       <div ng-view></div>
       <script type="text/ng-template" id="tmpl-menu">
         <div class="view menu">
+          <div id="title" class="title">Power Tool for Industrial 4.0</div>
           <div class="active-area">
             <div class="menu-item" >ロック</div>
             <a class="menu-item" href="#/list">回転・トルク設定</a>
