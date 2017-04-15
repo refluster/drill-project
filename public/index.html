@@ -79,10 +79,14 @@
           <div class="title">トルク設定</div>
           <div class="contents">
             <form>
-              登録名:
-              <input class="form-control" ng-model="item.name" id="modify.name" name="hoge" type="text" />
-              トルク:
-              <input class="form-control" ng-model="item.torque" id="modify.torque" type="number" />
+              <div class="form-group">
+                <label for="modify.name">登録名</label>
+                <input type="text" class="form-control" ng-model="item.name" id="modify.name" placeholder="名称">
+              </div>
+              <div class="form-group">
+                <label for="modify.torque">トルク</label>
+                <input type="text" class="form-control" ng-model="item.torque" id="modify.torque" placeholder="トルク">
+              </div>
               <button class="btn btn-primary" ng-click="update()">update</button>
               <button class="btn btn-primary" ng-click="cancel();">cancel</button>
               <button class="btn btn-danger" ng-click="del();">delete</button>
