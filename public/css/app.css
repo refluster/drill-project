@@ -39,6 +39,8 @@
 	display: block;
 	padding: 16px 0px;
 	margin-left: 20px;
+	font-weight: 500;
+	color: black;
 }
 body {
 	font-size: 18px;
