@@ -24,6 +24,9 @@ html, body, #contents, #contents > div, .view, .contents {
 	background-size: contain;
 	background-color: #f4f4f4;
 }
+.contents > form {
+	margin-top: 20px;
+}
 #title {
 	background-color:#0040C0;
 	color:#FFFFFF;
