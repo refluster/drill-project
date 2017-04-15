@@ -1,3 +1,6 @@
+audio {
+	display: none;
+}
 .list > .item, .history > .item {
     height: 240px;
     display: block;
