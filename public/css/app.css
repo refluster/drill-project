@@ -46,6 +46,11 @@ html, body, #contents, #contents > div, .view, .contents {
 	height: 60px;
 	line-height: 60px
 }
+.view > .title > .back-button {
+	position: fixed;
+	color: #888;
+	margin-left: 8px;
+}
 .view > .contents {
 	padding: 60px 0px 10px;
 	overflow-y: scroll;

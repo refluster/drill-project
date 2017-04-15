@@ -38,7 +38,10 @@
       </script>
       <script type="text/ng-template" id="tmpl-list">
         <div class="view list">
-          <div class="title">回転・トルク設定</div>
+          <div class="title">
+            <div class="back-button">←</div>
+            回転・トルク設定
+          </div>
           <div class="contents">
             <a class="item active-area" ng-repeat="(id, v) in items" href="#/list/modify/{{id}}">
               {{v.name}} ({{v.torque}})
@@ -49,7 +52,10 @@
       </script>
       <script type="text/ng-template" id="tmpl-history">
         <div class="view history">
-          <div class="title">作業履歴</div>
+          <div class="title">
+            <div class="back-button">←</div>
+            作業履歴
+          </div>
           <div class="contents">
             <button class="btn btn-primary" ng-click="logreset()">ログリセット</button>
             <div class="item active-area" ng-repeat="v in history | orderBy:'-'">
@@ -61,22 +67,34 @@
       </script>
       <script type="text/ng-template" id="tmpl-info">
         <div class="view info">
-          <div class="title">本体・電源の情報</div>
+          <div class="title">
+            <div class="back-button">←</div>
+            本体・電源の情報
+          </div>
         </div>
       </script>
       <script type="text/ng-template" id="tmpl-reset">
         <div class="view reset">
-          <div class="title">設定のリセット</div>
+          <div class="title">
+            設定のリセット
+            <div class="back-button">←</div>
+          </div>
         </div>
       </script>
       <script type="text/ng-template" id="tmpl-auth">
         <div class="view auth">
-          <div class="title">工具認証</div>
+          <div class="title">
+            工具認証
+            <div class="back-button">←</div>
+          </div>
         </div>
       </script>
       <script type="text/ng-template" id="tmpl-list-modify">
         <div class="view list-modify">
-          <div class="title">トルク設定</div>
+          <div class="title">
+            <div class="back-button">←</div>
+            トルク設定
+          </div>
           <div class="contents">
             <form>
               <div class="form-group">
