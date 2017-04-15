@@ -1,16 +1,16 @@
-.listed-item {
+.list > .item {
     height: 240px;
     display: block;
 	border: 1px solid black;
 }
-.listed-item .picture {
+.list > .item > .picture {
 	width: 240px;
 	height: 180px;
 	margin-left: auto;
 	margin-right: auto;
 	background-size: contain;
 }
-.history-item .picture {
+.history > .item > .picture {
 	width: 240px;
 	height: 180px;
 }
@@ -49,7 +49,5 @@ body {
 	border-top: 1px solid #ddd;
 }
 html, body, #contents, #contents > div, .view {
-	overflow:hidden, scroll;
 	height: 100%;
-    overflow: hidden;
 }

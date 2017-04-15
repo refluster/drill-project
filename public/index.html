@@ -37,7 +37,7 @@
       <script type="text/ng-template" id="tmpl-list">
         <div class="view list">
           <div class="title">回転・トルク設定</div>
-          <a class="listed-item" ng-repeat="(id, v) in items" href="#/list/modify/{{id}}">
+          <a class="item" ng-repeat="(id, v) in items" href="#/list/modify/{{id}}">
             <center>
               登録名:{{v.name}}<br>
               トルク:{{v.torque}}
@@ -50,15 +50,13 @@
         <div class="view history">
           <div class="title">作業履歴</div>
           <button class="btn btn-primary" ng-click="logreset()">ログリセット</button>
-          <ul class="history-item">
-            <li ng-repeat="v in history | orderBy:'-'">
-              name: {{items[v.id].name}}<br>
-              torque: {{v.torque}}<br>
-              result: {{v.result}}<br>
-              date: {{v.date}}<br>
-              <img class="picture" src="{{v.picPath}}">
-            </li>
-          </ul>
+          <div class="item" ng-repeat="v in history | orderBy:'-'">
+            name: {{items[v.id].name}}<br>
+            torque: {{v.torque}}<br>
+            result: {{v.result}}<br>
+            date: {{v.date}}<br>
+            <img class="picture" src="{{v.picPath}}">
+          </div>
         </div>
       </script>
       <script type="text/ng-template" id="tmpl-info">
