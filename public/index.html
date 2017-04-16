@@ -39,7 +39,7 @@
       <script type="text/ng-template" id="tmpl-list">
         <div class="view list">
           <div class="title">
-            <div class="back-button">←</div>
+            <div class="back-button" ng-click="backHistory()">←</div>
             回転・トルク設定
           </div>
           <div class="contents">
@@ -53,7 +53,7 @@
       <script type="text/ng-template" id="tmpl-history">
         <div class="view history">
           <div class="title">
-            <div class="back-button">←</div>
+            <div class="back-button" ng-click="backHistory()">←</div>
             作業履歴
           </div>
           <div class="contents">
@@ -68,7 +68,7 @@
       <script type="text/ng-template" id="tmpl-info">
         <div class="view info">
           <div class="title">
-            <div class="back-button">←</div>
+            <div class="back-button" ng-click="backHistory()">←</div>
             本体・電源の情報
           </div>
         </div>
@@ -76,23 +76,23 @@
       <script type="text/ng-template" id="tmpl-reset">
         <div class="view reset">
           <div class="title">
+            <div class="back-button" ng-click="backHistory()">←</div>
             設定のリセット
-            <div class="back-button">←</div>
           </div>
         </div>
       </script>
       <script type="text/ng-template" id="tmpl-auth">
         <div class="view auth">
           <div class="title">
+            <div class="back-button" ng-click="backHistory()">←</div>
             工具認証
-            <div class="back-button">←</div>
           </div>
         </div>
       </script>
       <script type="text/ng-template" id="tmpl-list-modify">
         <div class="view list-modify">
           <div class="title">
-            <div class="back-button">←</div>
+            <div class="back-button" ng-click="backHistory()">←</div>
             トルク設定
           </div>
           <div class="contents">

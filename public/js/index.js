@@ -79,6 +79,9 @@ app.service('db', ['$rootScope', '$filter', '$http', function($scope, $filter, $
 }]);
 
 app.controller('MainController', ['$scope', 'db', function($scope, db) {
+	$scope.backHistory = function() {
+		window.history.back();
+	};
 }]);
 
 app.controller('MenuController', ['$scope', 'db', function($scope, db) {
@@ -101,6 +104,7 @@ app.controller('HistoryController', ['$scope', 'db', function($scope, db) {
 		$scope.$apply(function() {
 			$scope.history = db.getHistory();
 			var his = db.getHistory();
+			if(his.length == 0) return;
 			var nhis = his[his.length-1];
 			if(nhis == -1) return;
 			if(nhis.result == "成功") document.getElementById("soundok").play();
