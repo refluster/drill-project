@@ -57,11 +57,11 @@
             作業履歴
           </div>
           <div class="contents">
-            <button class="btn btn-primary" ng-click="logreset()">ログリセット</button>
             <div class="item active-area" ng-repeat="v in history | orderBy:'-'">
               {{v.date}} / {{v.result}} ({{v.torque}}) {{items[v.id].name}}
               <div class="picture" style="background-image: url({{v.picPath}})"></div>
             </div>
+            <button ng-if="history.length != 0" class="btn btn-primary" ng-click="logreset()">リセット</button>
           </div>
         </div>
       </script>
