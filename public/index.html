@@ -75,14 +75,18 @@
             本体・電源の情報
           </div>
           <div class="contents">
-            Power tool
+            <div class="active-header">
+              Power tool
+            </div>
             <div class="item active-area">
               <div class="menu-item" ng-repeat="(k, v) in {Panasonic: '　', Model: 'EZFLA5N', SerialNo: '65342158'}">
                 <div class="key">{{k}}</div>
                 <div class="value">{{v}}</div>
               </div>
             </div>
-            Operating conditions
+            <div class="active-header">
+              Operating conditions
+            </div>
             <div class="item active-area">
               <div class="menu-item" ng-repeat="(k, v) in {Motor: 'Normal', Battery: 'Normal', Charge: '87%', Torque: 'Free', Network: 'Active'}">
                 <div class="key">{{k}}</div>

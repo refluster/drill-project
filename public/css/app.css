@@ -56,14 +56,22 @@ html, body, #contents, #contents > div, .view, .contents {
 	display: block;
 }
 .view > .contents {
-	padding: 60px 0px 10px;
+	padding: 80px 0px 10px;
 	overflow-y: scroll;
+}
+.active-header {
+	color: #888;
+	margin-left: 8px;
+	margin-bottom: 4px;
+}
+.active-header + .active-area {
+	margin-top: 0px;
 }
 .view .active-area {
 	background-color: #fff;
 	border-top: 1px solid #ddd;
 	border-bottom: 2px solid #aaa;
-	margin: 20px 0px;
+	margin: 0px 0px 20px;
 	position: relative;
 }
 .menu-item {
