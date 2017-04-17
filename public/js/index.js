@@ -99,6 +99,11 @@ app.controller('MenuController', ['$scope', 'db', function($scope, db) {
 	$scope.rock_unrock = function() {
 		db.rock_unrock();
 	};
+
+	$('#toggle').bootstrapToggle({
+		on: 'Rocked',
+		off: 'Unrocked'
+    });
 }]);
 
 app.controller('ListController', ['$scope', 'db', function($scope, db) {
