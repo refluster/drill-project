@@ -14,73 +14,101 @@
     <meta content="text/html; charset=EUC-JP">
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0">
     <title>Power Tool for Industrial 4.0</title>
-    <font size=4>
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.0/jquery.min.js"></script>
-<link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
-<script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
   </head>
   <body ng-app="App">
     <audio id="soundok" preload="auto" src="OK.mp3" controls></audio>
     <audio id="soundng" preload="auto" src="NG.mp3" controls></audio>
-    <div id="title" class="title"><h1>Power Tool for Industrial 4.0</h1></div>
     <div id="msg"></div>
     <div id="contents" ng-controller="MainController">
       <div ng-view></div>
       <script type="text/ng-template" id="tmpl-menu">
-        <div class="menu-item" >ロック<input type="checkbox" checked data-toggle="toggle"></div>
-        <a class="menu-item" href="#/list">回転・トルク設定</a>
-        <a class="menu-item" href="#/history">作業履歴</a>
-        <a class="menu-item" href="#/info">本体・電源の情報</a>
-        <a class="menu-item" href="#/reset">設定のリセット</a>
-        <a class="menu-item" href="#/auth">工具認証</a>
+        <div class="view menu">
+          <div id="title" class="title">Power Tool for Industrial 4.0</div>
+          <div class="contents">
+            <div class="active-area">
+              <div class="menu-item" >ロック</div>
+              <a class="menu-item" href="#/list">回転・トルク設定</a>
+              <a class="menu-item" href="#/history">作業履歴</a>
+              <a class="menu-item" href="#/info">本体・電源の情報</a>
+              <a class="menu-item" href="#/reset">設定のリセット</a>
+              <a class="menu-item" href="#/auth">工具認証</a>
+            </div>
+          </div>
+        </div>
       </script>
       <script type="text/ng-template" id="tmpl-list">
-        <div class="target">
-          <div style="color:#0040C0"><h2>登録箇所一覧</h2></div>
-          <a class="listed-item" ng-repeat="(id, v) in items" href="#/list/modify/{{id}}">
-            <center>
-              登録名:{{v.name}}<br>
-              トルク:{{v.torque}}
-            </center>
-            <div class="picture" style="background-image: url({{v.picPath}})"></div>
-          </a>
+        <div class="view list">
+          <div class="title">
+            <div class="back-button" ng-click="backHistory()">←</div>
+            回転・トルク設定
+          </div>
+          <div class="contents">
+            <a class="item active-area" ng-repeat="(id, v) in items" href="#/list/modify/{{id}}">
+              {{v.name}} ({{v.torque}})
+              <div class="picture" style="background-image: url({{v.picPath}})"></div>
+            </a>
+          </div>
         </div>
       </script>
       <script type="text/ng-template" id="tmpl-history">
-        <div class="history">
-          <div style="color:#0040C0">
-            <h2>締め付けログ<button class="btn btn-primary" ng-click="logreset()">ログリセット</button></h2>
+        <div class="view history">
+          <div class="title">
+            <div class="back-button" ng-click="backHistory()">←</div>
+            作業履歴
           </div>
-          <ul>
-           <font size=6>
-            <table rules="all">
-              <tr><th>登録名</th><th>トルク</th><th>締め付け成否</th><th>日付</th><th>--</th></tr>
-              <tr ng-repeat="v in history | orderBy:'-'">
-                <td>{{items[v.id].name}}</td><td align="center">{{v.torque}}</td>
-                <td align="center">{{v.result}}</td><td>{{v.date}}</td>
-                <td><img src="{{v.picPath}}"></td>
-              </tr>
-            </table>
-           </font>
-          </ul>
+          <div class="contents">
+            <div class="item active-area" ng-repeat="v in history | orderBy:'-'">
+              {{v.date}} / {{v.result}} ({{v.torque}}) {{items[v.id].name}}
+              <div class="picture" style="background-image: url({{v.picPath}})"></div>
+            </div>
+            <button ng-if="history.length != 0" class="btn btn-primary" ng-click="logreset()">リセット</button>
+          </div>
         </div>
       </script>
-      <script type="text/ng-template" id="tmpl-info">info</script>
-      <script type="text/ng-template" id="tmpl-reset">reset</script>
-      <script type="text/ng-template" id="tmpl-auth">auth</script>
-      <script type="text/ng-template" id="tmpl-list-modify">
-        <div style="color:#0040C0"><h2>トルク設定</h2></div>
-        <div>
-          <form>
-            登録名:
-            <input class="form-control" ng-model="item.name" id="modify.name" name="hoge" type="text" />
-            トルク:
-            <input class="form-control" ng-model="item.torque" id="modify.torque" type="number" />
-            <button class="btn btn-primary" ng-click="update()">update</button>
-            <button class="btn btn-primary" ng-click="cancel();">cancel</button>
-            <button class="btn btn-danger" ng-click="del();">delete</button>
-          </form>
+      <script type="text/ng-template" id="tmpl-info">
+        <div class="view info">
+          <div class="title">
+            <div class="back-button" ng-click="backHistory()">←</div>
+            本体・電源の情報
+          </div>
         </div>
+      </script>
+      <script type="text/ng-template" id="tmpl-reset">
+        <div class="view reset">
+          <div class="title">
+            <div class="back-button" ng-click="backHistory()">←</div>
+            設定のリセット
+          </div>
+        </div>
+      </script>
+      <script type="text/ng-template" id="tmpl-auth">
+        <div class="view auth">
+          <div class="title">
+            <div class="back-button" ng-click="backHistory()">←</div>
+            工具認証
+          </div>
+        </div>
+      </script>
+      <script type="text/ng-template" id="tmpl-list-modify">
+        <div class="view list-modify">
+          <div class="title">
+            <div class="back-button" ng-click="backHistory()">←</div>
+            設定変更
+          </div>
+          <div class="contents">
+            <form>
+              <div class="form-group">
+                <label for="modify.name">登録名</label>
+                <input type="text" class="form-control" ng-model="item.name" id="modify.name" placeholder="名称">
+              </div>
+              <div class="form-group">
+                <label for="modify.torque">トルク</label>
+                <input type="text" class="form-control" ng-model="item.torque" id="modify.torque" placeholder="トルク">
+              </div>
+              <button class="btn btn-primary" ng-click="update()">update</button>
+              <button class="btn btn-danger" ng-click="del();">delete</button>
+            </form>
+        <div class="view history">
       </script>
     </div>
   </body>

@@ -1,34 +1,77 @@
-.listed-item {
-    width: 260px;
-    height: 240px;
-    display: inline-block;
-	border: 1px solid black;
-}
-
-.listed-item .picture {
-	width: 240px;
-	height: 180px;
-	margin-left: auto;
-	margin-right: auto;
-	background-size: contain;
-}
-.title {
-	background-color:#0040C0;
-	color:#FFFFFF;
-	height:40px;
-}
-.target {
-	overflow: auto;
-	width: 280px;
-	height: calc(100vh - 60px);
-	position:absolute;
-	border:1px solid#000000;
-}
-.menu-item {
-	display: block;
-	padding: 30px 20px;
-	border: 1px solid #888;
+* {
+	padding: 0px;
+	margin: 0px;
 }
 audio {
 	display: none;
+}
+body {
+	font-size: 18px;
+}
+html, body, #contents, #contents > div, .view, .contents {
+	height: 100%;
+}
+.contents > .item, .history > .item {
+    display: block;
+	margin: 20px 0px;
+	padding: 8px 12px;
+	background-color: #fff;
+}
+.contents > .item > .picture {
+	width: 240px;
+	height: 180px;
+	margin-left: auto;
+	background-size: contain;
+	background-color: #f4f4f4;
+}
+.contents > form {
+	margin: 20px 8px 0px;
+}
+#title {
+	background-color:#0040C0;
+	color:#FFFFFF;
+	font-size: 30px;
+}
+.view {
+	background-color: #eee;
+}
+.view > .title {
+	position: fixed;
+	left: 0;
+	right: 0;
+	font-size: 24px;
+	background-color: white;
+	text-align: center;
+	border-bottom: 3px solid #aaa;
+	height: 60px;
+	line-height: 60px
+}
+.view > .title > .back-button {
+	position: fixed;
+	color: #888;
+	margin-left: 8px;
+}
+.view > .contents > button {
+	margin: 20px;
+	display: block;
+}
+.view > .contents {
+	padding: 60px 0px 10px;
+	overflow-y: scroll;
+}
+.view .active-area {
+	background-color: #fff;
+	border-top: 1px solid #ddd;
+	border-bottom: 2px solid #aaa;
+	margin: 20px 0px;
+}
+.menu-item {
+	display: block;
+	padding: 16px 0px;
+	margin-left: 20px;
+	font-weight: 500;
+	color: black;
+}
+.menu-item + .menu-item {
+	border-top: 1px solid #ddd;
 }
