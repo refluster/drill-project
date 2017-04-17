@@ -100,7 +100,9 @@ html, body, #contents, #contents > div, .view, .contents {
 }
 .toggle {
 	margin-left: 50%;
-	width: 80px;
+	width: 120px;
+	position: absolute;
+	margin-top: -8px;
 }
 .toggle-group label {
 	width: 80px;
