@@ -44,7 +44,8 @@ html, body, #contents, #contents > div, .view, .contents {
 	text-align: center;
 	border-bottom: 3px solid #aaa;
 	height: 60px;
-	line-height: 60px
+	line-height: 60px;
+	z-index: 1;
 }
 .view > .title > .back-button {
 	position: fixed;
