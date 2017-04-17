@@ -64,6 +64,7 @@ html, body, #contents, #contents > div, .view, .contents {
 	border-top: 1px solid #ddd;
 	border-bottom: 2px solid #aaa;
 	margin: 20px 0px;
+	position: relative;
 }
 .menu-item {
 	display: block;
@@ -74,6 +75,19 @@ html, body, #contents, #contents > div, .view, .contents {
 }
 .menu-item + .menu-item {
 	border-top: 1px solid #ddd;
+}
+.menu-item > .key {
+	width: 70%;
+	margin-right: auto;
+	position: absolute;
+}
+.menu-item > .value {
+	width: 70%;
+	text-align: right;
+	margin-left: auto;
+	position: relative;
+	color: #888;
+	font-weight: 400;
 }
 .toggle {
 	margin-left: 50%;
