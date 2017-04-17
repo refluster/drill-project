@@ -14,7 +14,7 @@ html, body, #contents, #contents > div, .view, .contents {
 .contents > .item, .history > .item {
     display: block;
 	margin: 20px 0px;
-	padding: 8px 12px;
+	padding: 8px 0px;
 	background-color: #fff;
 }
 .contents > .item > .picture {
@@ -93,6 +93,7 @@ html, body, #contents, #contents > div, .view, .contents {
 	width: 70%;
 	text-align: right;
 	margin-left: auto;
+	margin-right: 18px;
 	position: relative;
 	color: #888;
 	font-weight: 400;
