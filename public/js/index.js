@@ -39,6 +39,7 @@ app.service('db', ['$rootScope', '$filter', '$http', function($scope, $filter, $
 	var socket = io.connect('http://192.168.11.110:3000');
 	var hash = {};
 	var history = [];
+	var isRocked = true;
 
 	socket.on('connect', function(msg) {
 		console.log("connect");
@@ -54,6 +55,11 @@ app.service('db', ['$rootScope', '$filter', '$http', function($scope, $filter, $
 		history = d;
 		$scope.$broadcast('update:db:history');
 		console.log('history/update');
+	});
+
+	socket.on('rock_unrock/update', function(d) {
+		isRocked = (d.rock_state == "unrocked"? false: true);
+		console.log('rock_unrock/update ' + d.rock_state);
 	});
 
 	this.get = function() {
@@ -75,7 +81,12 @@ app.service('db', ['$rootScope', '$filter', '$http', function($scope, $filter, $
 
 	this.resetHistory = function() {
 		socket.emit('history/reset');
-	}
+	};
+
+	this.rock_unrock = function() {
+		var rock = (isRocked == true? "unrocked": "rocked");
+		socket.emit('rock_unrock/update', {rock_state: rock});
+	};
 }]);
 
 app.controller('MainController', ['$scope', 'db', function($scope, db) {
@@ -85,6 +96,9 @@ app.controller('MainController', ['$scope', 'db', function($scope, db) {
 }]);
 
 app.controller('MenuController', ['$scope', 'db', function($scope, db) {
+	$scope.rock_unrock = function() {
+		db.rock_unrock();
+	};
 }]);
 
 app.controller('ListController', ['$scope', 'db', function($scope, db) {
