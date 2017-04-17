@@ -75,3 +75,10 @@ html, body, #contents, #contents > div, .view, .contents {
 .menu-item + .menu-item {
 	border-top: 1px solid #ddd;
 }
+.toggle {
+	margin-left: 50%;
+	width: 80px;
+}
+.toggle-group label {
+	width: 80px;
+}
