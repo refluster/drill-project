@@ -29,7 +29,7 @@
           <div id="title" class="title">Power Tool</div>
           <div class="contents">
             <div class="item active-area">
-              <div class="menu-item">ロック<input id="toggle" type="checkbox" checked data-toggle="toggle" ng-click="rock_unrock()"></div>
+              <div class="menu-item">ロック<input id="toggle" type="checkbox" checked data-toggle="toggle" ng-click="lock_unlock()"></div>
               <a class="menu-item" ng-repeat="(url, title) in {list: '回転・トルク設定', history: '作業履歴', info: '本体・電源の情報', auth: '工具認証'}" href="#/{{url}}">
                 <div class="key">{{title}}</div>
                 <div class="value">→</div>

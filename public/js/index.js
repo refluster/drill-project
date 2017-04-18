@@ -39,7 +39,7 @@ app.service('db', ['$rootScope', '$filter', '$http', function($scope, $filter, $
 	var socket = io.connect('http://192.168.11.110:3000');
 	var hash = {};
 	var history = [];
-	var isRocked = true;
+	var isLocked = true;
 
 	socket.on('connect', function(msg) {
 		console.log("connect");
@@ -57,9 +57,9 @@ app.service('db', ['$rootScope', '$filter', '$http', function($scope, $filter, $
 		console.log('history/update');
 	});
 
-	socket.on('rock_unrock/update', function(d) {
-		isRocked = (d.rock_state == "unrocked"? false: true);
-		console.log('rock_unrock/update ' + d.rock_state);
+	socket.on('lock_unlock/update', function(d) {
+		isLocked = (d.lock_state == "unlocked"? false: true);
+		console.log('lock_unlock/update ' + d.lock_state);
 	});
 
 	this.get = function() {
@@ -83,9 +83,9 @@ app.service('db', ['$rootScope', '$filter', '$http', function($scope, $filter, $
 		socket.emit('history/reset');
 	};
 
-	this.rock_unrock = function() {
-		var rock = (isRocked == true? "unrocked": "rocked");
-		socket.emit('rock_unrock/update', {rock_state: rock});
+	this.lock_unlock = function() {
+		var lock = (isLocked == true? "unlocked": "locked");
+		socket.emit('lock_unlock/update', {lock_state: lock});
 	};
 }]);
 
@@ -96,13 +96,13 @@ app.controller('MainController', ['$scope', 'db', function($scope, db) {
 }]);
 
 app.controller('MenuController', ['$scope', 'db', function($scope, db) {
-	$scope.rock_unrock = function() {
-		db.rock_unrock();
+	$scope.lock_unlock = function() {
+		db.lock_unlock();
 	};
 
 	$('#toggle').bootstrapToggle({
-		on: 'Rocked',
-		off: 'Unrocked'
+		on: 'Locked',
+		off: 'Unlocked'
     });
 }]);
 
