@@ -39,7 +39,6 @@ app.service('db', ['$rootScope', '$filter', '$http', function($scope, $filter, $
 	var socket = io.connect('http://192.168.11.110:3000');
 	var hash = {};
 	var history = [];
-	var isLocked = true;
 
 	socket.on('connect', function(msg) {
 		console.log("connect");
@@ -58,7 +57,11 @@ app.service('db', ['$rootScope', '$filter', '$http', function($scope, $filter, $
 	});
 
 	socket.on('lock_unlock/update', function(d) {
-		isLocked = (d.lock_state == "unlocked"? false: true);
+		if (d.lock_state == "locked") {
+			$('#toggle').bootstrapToggle('on');
+		} else {
+			$('#toggle').bootstrapToggle('off');
+		}
 		console.log('lock_unlock/update ' + d.lock_state);
 	});
 
@@ -84,7 +87,7 @@ app.service('db', ['$rootScope', '$filter', '$http', function($scope, $filter, $
 	};
 
 	this.lock_unlock = function() {
-		var lock = (isLocked == true? "unlocked": "locked");
+		var lock = ($('#toggle').prop('checked') == true? "unlocked": "locked");
 		socket.emit('lock_unlock/update', {lock_state: lock});
 	};
 }]);
