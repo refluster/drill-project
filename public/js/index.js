@@ -127,11 +127,11 @@ app.controller('HistoryController', ['$scope', 'db', function($scope, db) {
 			$scope.history = db.getHistory();
 			if ($scope.history.length == 0) return;
 			var last = $scope.history[$scope.history.length - 1];
-			var msgAlert = 'トルク: ' + last.torque	+ '\n締め付け成否: ' + last.result;
-			if (last.result == "成功") {
-				msgAlert = '締め付け箇所: ' + db.get()[nh.id].name + '\n' + msgAlert;
+			var msgAlert = 'torque: ' + last.torque	+ '\nresult: ' + last.result;
+			if (last.result == "OK") {
+				msgAlert = 'place: ' + db.get()[nh.id].name + '\n' + msgAlert;
 				document.getElementById("soundok").play();
-			} else if (last.result == "失敗") {
+			} else if (last.result == "NG") {
 				document.getElementById("soundng").play();
 			}
 			alert(msgAlert);

@@ -29,8 +29,8 @@
           <div id="title" class="title">Power Tool</div>
           <div class="contents">
             <div class="item active-area">
-              <div class="menu-item">ロック<input id="toggle" type="checkbox" checked data-toggle="toggle" ng-click="lock_unlock()"></div>
-              <a class="menu-item" ng-repeat="(url, title) in {list: '回転・トルク設定', history: '作業履歴', info: '本体・電源の情報', auth: '工具認証'}" href="#/{{url}}">
+              <div class="menu-item">Lock<input id="toggle" type="checkbox" checked data-toggle="toggle" ng-click="lock_unlock()"></div>
+              <a class="menu-item" ng-repeat="(url, title) in {list: 'Torque Setting', history: 'Work History', info: 'Tool Information', auth: 'Authentication'}" href="#/{{url}}">
                 <div class="key">{{title}}</div>
                 <div class="value">→</div>
               </a>
@@ -42,7 +42,7 @@
         <div class="view list">
           <div class="title">
             <div class="back-button" ng-click="backHistory()">←</div>
-            回転・トルク設定
+            Torque Setting
           </div>
           <div class="contents">
             <a class="item active-area" ng-repeat="(id, v) in items" href="#/list/modify/{{id}}">
@@ -56,14 +56,14 @@
         <div class="view history">
           <div class="title">
             <div class="back-button" ng-click="backHistory()">←</div>
-            作業履歴
+            Work History
           </div>
           <div class="contents">
             <div class="item active-area" ng-repeat="v in history | orderBy:'-'">
               {{v.date}} / {{v.result}} ({{v.torque}}) {{items[v.id].name}}
               <div class="picture" style="background-image: url({{v.picPath}})"></div>
             </div>
-            <button ng-if="history.length != 0" class="btn btn-primary" ng-click="logreset()">リセット</button>
+            <button ng-if="history.length != 0" class="btn btn-primary" ng-click="logreset()">clear</button>
           </div>
         </div>
       </script>
@@ -71,7 +71,7 @@
         <div class="view info">
           <div class="title">
             <div class="back-button" ng-click="backHistory()">←</div>
-            本体・電源の情報
+            Tool Information
           </div>
           <div class="contents">
             <div class="active-header">
@@ -99,7 +99,7 @@
         <div class="view reset">
           <div class="title">
             <div class="back-button" ng-click="backHistory()">←</div>
-            設定のリセット
+            reset
           </div>
         </div>
       </script>
@@ -107,7 +107,7 @@
         <div class="view auth">
           <div class="title">
             <div class="back-button" ng-click="backHistory()">←</div>
-            工具認証
+            Authentication
           </div>
         </div>
       </script>
@@ -115,17 +115,17 @@
         <div class="view list-modify">
           <div class="title">
             <div class="back-button" ng-click="backHistory()">←</div>
-            設定変更
+            Modify
           </div>
           <div class="contents">
             <form>
               <div class="form-group">
-                <label for="modify.name">登録名</label>
-                <input type="text" class="form-control" ng-model="item.name" id="modify.name" placeholder="名称">
+                <label for="modify.name">name</label>
+                <input type="text" class="form-control" ng-model="item.name" id="modify.name" placeholder="name">
               </div>
               <div class="form-group">
-                <label for="modify.torque">トルク</label>
-                <input type="text" class="form-control" ng-model="item.torque" id="modify.torque" placeholder="トルク">
+                <label for="modify.torque">torque</label>
+                <input type="text" class="form-control" ng-model="item.torque" id="modify.torque" placeholder="torque">
               </div>
               <button class="btn btn-primary" ng-click="update()">update</button>
               <button class="btn btn-danger" ng-click="del();">delete</button>
